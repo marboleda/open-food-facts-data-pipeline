@@ -7,11 +7,14 @@ Open Food Facts provides a database dump daily, as detailed [here](world.openfoo
 ## Use Cases
 
 ## Architecture
+| Technology | Purpose |
+| --- | --- |
+| Apache Airflow | Workflow Orchestration
 
 ## Dashboard
 
 ## How-To
 ### Prerequisites
-- Docker Desktop / Docker Engine is installed
+- Docker Desktop **or** Docker Engine + Docker Compose is [installed](https://docs.docker.com/compose/install)
 
-## Potential Improvements
+## Notes and Potential Improvements
