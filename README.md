@@ -9,12 +9,14 @@ Open Food Facts provides a database dump daily, as detailed [here](https://world
 ## Architecture
 | Technology | Purpose |
 | --- | --- |
+| Terraform | Infrastructure as Code |
 | Apache Airflow | Workflow Orchestration
 
 ## Dashboard
 
 ## How-To
 ### Prerequisites
-- Docker Desktop **or** Docker Engine + Docker Compose is [installed](https://docs.docker.com/compose/install)
+- [Terraform](https://developer.hashicorp.com/terraform/install) is installed.
+- Docker Desktop **or** Docker Engine + Docker Compose is installed
 
 ## Notes and Potential Improvements

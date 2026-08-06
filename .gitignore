@@ -1,5 +1,11 @@
 .env
 .venv
 
+# Terraform-related files
+*.json
+infrastructure/*.tfstate
+infrastructure/*.tfstate.*
+infrastructure/.terraform/
+
 orchestration/config/airflow.cfg
 orchestration/logs/
