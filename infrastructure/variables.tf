@@ -25,6 +25,7 @@ variable "location" {
 variable "gcs_bucket_name" {
     description = "Name of the GCS bucket to be created"
     # Provide a unique name for your GCS bucket.
+    # Recommendation: follow the pattern "<project-id>-<desired-bucket-name>" to ensure uniqueness.
     default = "your-unique-gcs-bucket-name"
 }
 

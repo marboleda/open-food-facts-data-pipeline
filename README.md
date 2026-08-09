@@ -10,7 +10,8 @@ Open Food Facts provides a database dump daily, as detailed [here](https://world
 | Technology | Purpose |
 | --- | --- |
 | Terraform | Infrastructure as Code |
-| Apache Airflow | Workflow Orchestration
+| Apache Airflow | Workflow Orchestration |
+| Google Cloud Storage | Data Lake |
 
 ## Dashboard
 
@@ -18,5 +19,10 @@ Open Food Facts provides a database dump daily, as detailed [here](https://world
 ### Prerequisites
 - [Terraform](https://developer.hashicorp.com/terraform/install) is installed.
 - Docker Desktop **or** Docker Engine + Docker Compose is installed
+- You have a [Google Cloud Platform](https://cloud.google.com/) account
+    - Make sure you have a project created that you will use for this pipeline.
+    - Make sure you have a Service Account in the project with the following roles:
+        - Storage Admin
+        - BigQuery Data Editor
 
 ## Notes and Potential Improvements

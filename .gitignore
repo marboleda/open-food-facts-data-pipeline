@@ -2,7 +2,7 @@
 .venv
 
 # Terraform-related files
-*.json
+infrastructure/*.json
 infrastructure/*.tfstate
 infrastructure/*.tfstate.*
 infrastructure/.terraform/
