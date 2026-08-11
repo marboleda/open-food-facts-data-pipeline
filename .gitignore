@@ -7,5 +7,7 @@ infrastructure/*.tfstate
 infrastructure/*.tfstate.*
 infrastructure/.terraform/
 
+# Airflow-related files
 orchestration/config/airflow.cfg
 orchestration/logs/
+orchestration/dags/__pycache__/
