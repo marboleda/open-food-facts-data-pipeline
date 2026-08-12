@@ -3,9 +3,9 @@ from airflow.providers.google.cloud.operators.gcs import GCSCreateBucketOperator
 from airflow.providers.google.cloud.operators.bigquery import BigQueryCreateEmptyDatasetOperator
 
 ## Set these variables before executing the DAG
-PROJECT_ID = "open-food-facts-505018"
-BUCKET_NAME = "open-food-facts-505018-source-data"  ## Recommendation: follow the pattern "<gcp-project-id>-<desired-bucket-name>" to ensure uniqueness.
-DATASET_NAME = "open_food_facts_data"
+PROJECT_ID = "your-gcp-project-id"
+BUCKET_NAME = "your-unique-gcs-bucket-name"  ## Recommendation: follow the pattern "<gcp-project-id>-<desired-bucket-name>" to ensure uniqueness.
+DATASET_NAME = "your_bigquery_dataset_name"
 REGION = "us-central1" # change if desired
 
 @dag
