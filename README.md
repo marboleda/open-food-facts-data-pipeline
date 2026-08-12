@@ -21,8 +21,13 @@ Open Food Facts provides a database dump daily, as detailed [here](https://world
 - Docker Desktop **or** Docker Engine + Docker Compose is installed
 - You have a [Google Cloud Platform](https://cloud.google.com/) account
     - Make sure you have a project created that you will use for this pipeline.
+    - Make sure you have the following APIs enabled:
+        - BigQuery API
+        - Cloud Storage API
+        - Storage Transfer API
     - Make sure you have a Service Account in the project with the following roles:
-        - Storage Admin
         - BigQuery Data Editor
+        - Storage Admin
+        - Storage Transfer Admin
 
 ## Notes and Potential Improvements

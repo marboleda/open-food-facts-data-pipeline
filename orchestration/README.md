@@ -30,3 +30,15 @@ Parquet files are also more performant in data processing, which will be helpful
 
 
 ## How-To
+### Prerequisites
+When transferring source data to your GCS bucket using Airflow, GCP does not use your defined service account. Rather, it uses a [service agent](https://docs.cloud.google.com/iam/docs/service-account-types#service-agents) that it creates for the Storage Transfer service.
+
+This service agent needs to have `storage.buckets.get` permission for the cloud transfer job to be created (it will return an error otherwise).
+
+The service agent should have the email address: 
+- project-***project-number***@storage-transfer-service.iam.gserviceaccount.com
+
+For example: `project-878874499236@storage-transfer-service.iam.gserviceaccount.com`
+
+Go to your GCS bucket, click on `Permissions` then `Grant access`.  
+Add your service agent as a new principal, and assign the roles of **Storage Bucket Viewer** and **Storage Object User**.
