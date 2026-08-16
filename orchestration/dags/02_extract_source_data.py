@@ -4,6 +4,8 @@ from airflow.sdk import dag
 from airflow.providers.google.cloud.operators.cloud_storage_transfer_service import \
     CloudDataTransferServiceCreateJobOperator, GcpTransferJobsStatus
 
+GCS_BUCKET_NAME = "your-gcs-bucket-name"
+
 @dag
 def extract_source_data():
     date_today = date.today()
@@ -16,10 +18,10 @@ def extract_source_data():
             "projectId": "open-food-facts-505018",
             "transferSpec": {
                 "httpDataSource": {
-                    "listUrl": "https://huggingface.co/datasets/openfoodfacts/product-database/resolve/main/food.parquet?download=true"
+                    "listUrl": f"gs://{GCS_BUCKET_NAME}/source_parquet_url.tsv"
                 },
                 "gcsDataSink": {
-                    "bucketName": "open-food-facts-505018-source-data",
+                    "bucketName": GCS_BUCKET_NAME,
                     "path": f"open_food_facts_subset_{date_today}.parquet/"
                 }
             },
