@@ -45,7 +45,9 @@ Go to your GCS bucket, click on `Permissions` then `Grant access`.
 Add your service agent as a new principal, and assign the roles of **Storage Bucket Viewer** and **Storage Object User**.
 
 #### List URL for Parquet
-When scheduling the extraction for the parquet file, you need to provide a .`tsv` file detailing which URL to extract from.
+When scheduling the extraction for the .parquet or JSONL file, you need to provide a .`tsv` file detailing which URL to extract from.
 
-This .tsv can be found in the root of the `orchestration` directory: `source_parquet_url.tsv`.  
-Upload this to your GCS bucket before running `02_extract_source_data.py` (this only needs to be done once)
+The .tsv for the parquet can be found in the root of the `orchestration` directory: `source_parquet_url.tsv`.  
+The .tsv for the JSONL can also be found in the root of `orchestration` with this name: `source_json_url.tsv`.  
+
+Upload these to your GCS bucket before running `02_extract_source_data.py` (this only needs to be done once)
