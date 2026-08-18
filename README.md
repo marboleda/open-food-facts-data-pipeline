@@ -11,7 +11,8 @@ Open Food Facts provides a database dump daily, as detailed [here](https://world
 | --- | --- |
 | Terraform | Infrastructure as Code |
 | Apache Airflow | Workflow Orchestration |
-| Google Cloud Storage | Data Lake |
+| Google Cloud Storage | Object Storage |
+| BigQuery | Data Warehouse |
 
 ## Dashboard
 
