@@ -28,7 +28,7 @@ def schedule_extraction_from_source(source: Source):
                 },
                 "gcsDataSink": {
                     "bucketName": GCS_BUCKET_NAME,
-                    "path": f"open_food_facts_subset_{date_today}_{source.value}/"
+                    "path": f"open_food_facts_subset_{source.value}/"
                 }
             },
             "schedule": {
