@@ -5,6 +5,7 @@ This is a data pipeline for processing data from [Open Food Facts](https://world
 Open Food Facts provides a database dump daily, as detailed [here](https://world.pro.openfoodfacts.org/data). This allows us to analyse up-to-date food data and gain insights into food & nutrition trends around the world.
 
 ## Use Cases
+- Knowledge base for a RAG-powered AI Assistant (e.g. a nutrition assistant)
 
 ## Architecture
 | Technology | Purpose |
