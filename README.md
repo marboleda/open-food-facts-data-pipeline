@@ -26,9 +26,14 @@ Open Food Facts provides a database dump daily, as detailed [here](https://world
         - BigQuery API
         - Cloud Storage API
         - Storage Transfer API
+        - Dataflow API
     - Make sure you have a Service Account in the project with the following roles:
-        - BigQuery Data Editor
         - Storage Admin
         - Storage Transfer Admin
+        - BigQuery Data Editor
+        - BigQuery Job User
+        - Dataflow Developer
+        - Dataflow Worker
+        - Service Account User
 
-## Notes and Potential Improvements
+## Notes

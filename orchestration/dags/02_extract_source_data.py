@@ -7,7 +7,7 @@ from airflow.providers.google.cloud.operators.cloud_storage_transfer_service imp
 
 GCP_PROJECT_ID = "your-gcp-project-id"
 GCS_BUCKET_NAME = "your-gcs-bucket-name"
-GCP_CONN_ID = "open_food_facts_gcp"  # Ensure this connection is set up in your Airflow with the correct credentials
+GCP_CONNECTION_ID = "open_food_facts_gcp"  # Ensure this connection is set up in your Airflow with the correct credentials
 
 class Source(Enum):
     PARQUET = "parquet"
@@ -28,7 +28,10 @@ def schedule_extraction_from_source(source: Source):
                 },
                 "gcsDataSink": {
                     "bucketName": GCS_BUCKET_NAME,
-                    "path": f"open_food_facts_subset_{source.value}/"
+                    "path": f"{source.value}/"
+                },
+                "transferOptions": {
+                    "overwriteObjectsAlreadyExistingInSink": True
                 }
             },
             "schedule": {
@@ -44,7 +47,7 @@ def schedule_extraction_from_source(source: Source):
                 }
             }
         },
-        gcp_conn_id=GCP_CONN_ID
+        gcp_conn_id=GCP_CONNECTION_ID
     )
 
 @dag
