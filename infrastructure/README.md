@@ -1,8 +1,11 @@
-We are using Terraform to create the following infrastructure for this pipeline:  
+# Infrastructure Setup
+
+We are using **Terraform** to create the following GCP resources for this pipeline:  
 - Google Cloud Storage bucket
 - Google BigQuery dataset
 
-To set up your own infrastructure, follow these steps:
+## How To
+To set up your infrastructure, follow these steps:
 1. Replace the values in variables.tf with the corresponding values for your GCP project
 2. Run terraform init
 3. Run terraform plan to review execution plan for resources

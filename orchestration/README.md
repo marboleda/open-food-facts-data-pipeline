@@ -1,5 +1,5 @@
 # Workflow Orchestration
-We will use Apache Airflow to orchestrate the extraction of the OFF data and loading into GCP (specifically into GCS, Google Cloud Storage).
+We will use Apache Airflow to orchestrate the extraction of the OFF data and loading into GCP.
 
 ## Overview
 The data can come in multiple formats, which gives us several options for extraction:

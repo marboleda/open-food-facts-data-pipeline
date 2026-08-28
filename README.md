@@ -37,4 +37,12 @@ Open Food Facts provides a database dump daily, as detailed [here](https://world
         - Dataflow Worker
         - Service Account User
 
+### Steps
+1. Set up your GCS Bucket and BigQuery Dataset.
+    - You have 2 options for doing this:
+        - Follow the instructions in the [infrastructure](https://github.com/marboleda/open-food-facts-data-pipeline/tree/main/infrastructure) folder to create the resources through Terraform, **or**
+        - Skip to the next step (Step 2) where you have the option of creating them within Airflow.
+2. Extract and load the data into BigQuery by following the steps in the [orchestration](https://github.com/marboleda/open-food-facts-data-pipeline/tree/main/orchestration) folder
+    - If you didn't set up the GCP resources in the previous step, you have the opportunity to do so here.
+
 ## Notes
