@@ -32,6 +32,7 @@ def load_from_gcs(format: Source_Format):
     )
 
 def extract_jsonl_gz():
+    # extraction takes about 30mins., extracted file is ~85 GB
     TEMPLATE_PATH = "gs://dataflow-templates/latest/Bulk_Decompress_GCS_Files"
 
     return DataflowTemplatedJobStartOperator(
@@ -52,10 +53,9 @@ def extract_jsonl_gz():
 @dag
 def load_to_bq():
 
-    load_parquet_to_bq = load_from_gcs(Source_Format.PARQUET)
+    load_from_gcs(Source_Format.PARQUET)
 
-    # unzip takes about 30mins.
-    # unzip_jsonl_gz = extract_jsonl_gz()
-    # load_jsonl_to_bq = load_from_gcs(Source_Format.JSONL)
+    ## TODO: Tabling this until later due to complexity and having the parquet data available
+    # extract_jsonl_gz() >> load_from_gcs(Source_Format.JSONL)
 
 load_to_bq()
