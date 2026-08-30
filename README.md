@@ -33,6 +33,7 @@ Open Food Facts provides a database dump daily, as detailed [here](https://world
         - Storage Transfer Admin
         - BigQuery Data Editor
         - BigQuery Job User
+        - BigQuery Read Session User
         - Dataflow Developer
         - Dataflow Worker
         - Service Account User
