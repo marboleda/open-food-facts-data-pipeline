@@ -1,0 +1,229 @@
+version: 2
+
+sources:
+  - name: open_food_facts_data
+    tables:
+      - name: open_food_facts_parquet
+        columns:
+          - name: additives_n
+            data_type: int64
+          - name: additives_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: allergens_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: brands_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: brands
+            data_type: string
+          - name: categories
+            data_type: string
+          - name: categories_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: categories_properties
+            data_type: struct<`ciqual_food_code` int64, `agribalyse_food_code` int64, `agribalyse_proxy_food_code` int64>
+          - name: checkers_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: ciqual_food_name_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: cities_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: code
+            data_type: string
+          - name: compared_to_category
+            data_type: string
+          - name: complete
+            data_type: int64
+          - name: completeness
+            data_type: float64
+          - name: correctors_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: countries_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: created_t
+            data_type: int64
+          - name: creator
+            data_type: string
+          - name: data_quality_errors_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: data_quality_info_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: data_quality_warnings_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: data_sources_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: environmental_score_data
+            data_type: string
+          - name: environmental_score_grade
+            data_type: string
+          - name: environmental_score_score
+            data_type: int64
+          - name: environmental_score_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: editors
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: emb_codes_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: emb_codes
+            data_type: string
+          - name: entry_dates_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: food_groups_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: generic_name
+            data_type: struct<`list` array<struct<`element` struct<`lang` string, `text` string>>>>
+          - name: images
+            data_type: struct<`list` array<struct<`element` struct<`key` string, `imgid` int64, `rev` int64, `sizes` struct<`100` struct<`h` int64, `w` int64>, `200` struct<`h` int64, `w` int64>, `400` struct<`h` int64, `w` int64>, `full` struct<`h` int64, `w` int64>>, `uploaded_t` int64, `uploader` string>>>>
+          - name: informers_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: ingredients_analysis_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: ingredients_from_palm_oil_n
+            data_type: int64
+          - name: ingredients_n
+            data_type: int64
+          - name: ingredients_original_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: ingredients_percent_analysis
+            data_type: int64
+          - name: ingredients_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: ingredients_text
+            data_type: struct<`list` array<struct<`element` struct<`lang` string, `text` string>>>>
+          - name: ingredients_with_specified_percent_n
+            data_type: int64
+          - name: ingredients_with_unspecified_percent_n
+            data_type: int64
+          - name: ingredients_without_ciqual_codes_n
+            data_type: int64
+          - name: ingredients_without_ciqual_codes
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: ingredients
+            data_type: string
+          - name: known_ingredients_n
+            data_type: int64
+          - name: labels_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: labels
+            data_type: string
+          - name: lang
+            data_type: string
+          - name: languages_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: last_edit_dates_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: last_editor
+            data_type: string
+          - name: last_image_t
+            data_type: int64
+          - name: last_modified_by
+            data_type: string
+          - name: last_modified_t
+            data_type: int64
+          - name: last_updated_t
+            data_type: int64
+          - name: link
+            data_type: string
+          - name: main_countries_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: manufacturing_places_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: manufacturing_places
+            data_type: string
+          - name: max_imgid
+            data_type: int64
+          - name: minerals_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: misc_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: new_additives_n
+            data_type: int64
+          - name: no_nutrition_data
+            data_type: boolean
+          - name: nova_group
+            data_type: int64
+          - name: nova_groups_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: nova_groups
+            data_type: string
+          - name: nucleotides_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: nutrient_levels_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: nutriments
+            data_type: struct<`list` array<struct<`element` struct<`name` string, `value` float64, `100g` float64, `serving` float64, `unit` string, `prepared_value` float64, `prepared_100g` float64, `prepared_serving` float64, `prepared_unit` string>>>>
+          - name: nutriscore_grade
+            data_type: string
+          - name: nutriscore_score
+            data_type: int64
+          - name: nutrition_data_per
+            data_type: string
+          - name: obsolete
+            data_type: boolean
+          - name: origins_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: origins
+            data_type: string
+          - name: owner_fields
+            data_type: struct<`list` array<struct<`element` struct<`field_name` string, `timestamp` int64>>>>
+          - name: owner
+            data_type: string
+          - name: packagings_complete
+            data_type: boolean
+          - name: packaging_recycling_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: packaging_shapes_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: packaging_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: packaging_text
+            data_type: struct<`list` array<struct<`element` struct<`lang` string, `text` string>>>>
+          - name: packaging
+            data_type: string
+          - name: packagings
+            data_type: struct<`list` array<struct<`element` struct<`material` string, `number_of_units` int64, `quantity_per_unit` string, `quantity_per_unit_unit` string, `quantity_per_unit_value` string, `recycling` string, `shape` string, `weight_measured` float64>>>>
+          - name: photographers
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: popularity_key
+            data_type: int64
+          - name: popularity_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: product_name
+            data_type: struct<`list` array<struct<`element` struct<`lang` string, `text` string>>>>
+          - name: product_quantity_unit
+            data_type: string
+          - name: product_quantity
+            data_type: string
+          - name: purchase_places_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: quantity
+            data_type: string
+          - name: rev
+            data_type: int64
+          - name: scans_n
+            data_type: int64
+          - name: serving_quantity
+            data_type: string
+          - name: serving_size
+            data_type: string
+          - name: states_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: stores_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: stores
+            data_type: string
+          - name: traces_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: unique_scans_n
+            data_type: int64
+          - name: unknown_ingredients_n
+            data_type: int64
+          - name: unknown_nutrients_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: vitamins_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+          - name: with_non_nutritive_sweeteners
+            data_type: int64
+          - name: with_sweeteners
+            data_type: int64
+          - name: schema_version
+            data_type: int64
