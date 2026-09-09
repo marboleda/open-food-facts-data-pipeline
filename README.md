@@ -2,10 +2,14 @@
 This is a data pipeline for processing data from [Open Food Facts](https://world.openfoodfacts.org/), a crowdsourced food products database that contains info about food products around the world so people can make better decisions about their food purchases.
 
 ## Overview
-Open Food Facts provides a database dump daily, as detailed [here](https://world.pro.openfoodfacts.org/data). This allows us to analyse up-to-date food data and gain insights into food & nutrition trends around the world.
+Open Food Facts (OFF) provides a database dump daily, as detailed [here](https://world.pro.openfoodfacts.org/data). This allows us to analyse up-to-date food data and gain insights into food & nutrition trends around the world.
 
 ## Use Cases
 - Knowledge base for a RAG-powered AI Assistant (e.g. a nutrition assistant)
+- Get insights about the OFF database to help with roadmapping for the product
+    - Rate of growth over the past months/years
+    - How many products are still using an old schema
+    - etc.
 
 ## Architecture
 | Technology | Purpose |
