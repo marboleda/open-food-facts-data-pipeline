@@ -47,3 +47,4 @@ Open Food Facts provides a database dump daily, as detailed [here](https://world
     - If you didn't set up the GCP resources in the previous step, you have the opportunity to do so here.
 
 ## Notes
+- Here is a useful resource to help understand the source data fields: [API Schemas](https://openfoodfacts.github.io/documentation/docs/Product-Opener/schemas/schemas/)
