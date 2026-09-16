@@ -1,0 +1,340 @@
+version: 2
+
+sources:
+  - name: open_food_facts_data
+    tables:
+      - name: open_food_facts_parquet
+        columns:
+          - name: additives_n
+            data_type: int64
+            description: "Number of food additives detected in the ingredients list."
+          - name: additives_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the food additives present in the product (e.g. en:e330)."
+          - name: allergens_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for allergens present in the product, matched against the allergens taxonomy."
+          - name: brands_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: An array of indexed brands tag entries (for search). That is the id of brands found in taxonomy + brands not found in taxonomy (with case / accents / spaces normalized). This is mostly used for search as the normalization of entries not in the taxonomy is lossy.
+          - name: brands
+            data_type: string
+            description: Comma separated list of brands (not taxonomized), in the last language used to edit it (recorded in brands_lc). This field is mostly used for debugging and testing purposes. Do not use it for display purposes.
+          - name: categories
+            data_type: string
+            description: Comma separated list of categories (not taxonomized), in the last language used to edit it (recorded in categories_lc). This field is mostly used for debugging and testing purposes. Do not use it for display purposes.. 
+          - name: categories_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: An array of indexed categories tag entries (for search). That is the id of categories found in taxonomy + categories not found in taxonomy (with case / accents / spaces normalized). This is mostly used for search as the normalization of entries not in the taxonomy is lossy.
+          - name: categories_properties
+            data_type: struct<`ciqual_food_code` int64, `agribalyse_food_code` int64, `agribalyse_proxy_food_code` int64>
+            description: "Properties inherited from the product's category taxonomy, such as CIQUAL and Agribalyse food codes used for nutrition and environmental score computations."
+          - name: checkers_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "List of contributors (checkers) who checked and validated the product's data."
+          - name: ciqual_food_name_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed tags of the CIQUAL food name associated with the product's category, used for nutrition and environmental score computations."
+          - name: cities_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed tags for the city where the product was manufactured or packaged."
+          - name: code
+            data_type: string
+            description: barcode of the product (can be EAN-13 or internal codes for some food stores), for products without a barcode, Open Food Facts assigns a number starting with the 200 reserved prefix
+          - name: compared_to_category
+            data_type: string
+            description: "The category used as the reference when comparing this product's nutrition and other values to similar products."
+          - name: complete
+            data_type: int64
+            description: "Indicates whether the product page is considered complete (1) or not (0)."
+          - name: completeness
+            data_type: float64
+            description: "A score between 0 and 1 indicating how complete the product's data is."
+          - name: correctors_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "List of contributors (correctors) who fixed or corrected data on the product."
+          - name: countries_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the countries where the product is sold."
+          - name: created_t
+            data_type: int64
+            description: Date when the product was added (UNIX timestamp format). See also `entry_dates_tags`
+          - name: creator
+            data_type: string
+            description: "The username of the contributor who first added the product."
+          - name: data_quality_errors_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Tags describing data quality errors detected on the product, from the data quality taxonomy."
+          - name: data_quality_info_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Tags describing data quality information notes on the product, from the data quality taxonomy."
+          - name: data_quality_warnings_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Tags describing data quality warnings detected on the product, from the data quality taxonomy."
+          - name: data_sources_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed tags for the source(s) of data imported from producers."
+          - name: environmental_score_data
+            data_type: string
+            description: "Detailed data used to compute the Environmental-Score (Eco-Score), including adjustments for origins of ingredients, packaging, and production system."
+          - name: environmental_score_grade
+            data_type: string
+            description: "The Environmental-Score (Eco-Score) grade for the product, from a to e."
+          - name: environmental_score_score
+            data_type: int64
+            description: "The Environmental-Score (Eco-Score) for the product, as an integer."
+          - name: environmental_score_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "All Environmental-Score (Eco-Score) grades of the product; usually a single value, but may include more for products composed of sub-products."
+          - name: editors
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "List of contributors who have edited the product."
+          - name: emb_codes_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the packager codes (EMB codes) of the product."
+          - name: emb_codes
+            data_type: string
+            description: "Packager code. EMB is the French system of traceability codes for packagers, e.g. EMB 2013330."
+          - name: entry_dates_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "The date the product was added to the database, represented as a series of tags: yyyy-mm-dd, yyyy-mm, yyyy."
+          - name: food_groups_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the food group(s) the product belongs to (PNNS food groups)."
+          - name: generic_name
+            data_type: struct<`list` array<struct<`element` struct<`lang` string, `text` string>>>>
+            description: "Generic / legal name of the product, given per language as lang/text pairs."
+          - name: images
+            data_type: struct<`list` array<struct<`element` struct<`key` string, `imgid` int64, `rev` int64, `sizes` struct<`100` struct<`h` int64, `w` int64>, `200` struct<`h` int64, `w` int64>, `400` struct<`h` int64, `w` int64>, `full` struct<`h` int64, `w` int64>>, `uploaded_t` int64, `uploader` string>>>>
+            description: "Metadata for all images uploaded for the product (front, ingredients, nutrition, packaging), including image ids, revisions, and available sizes."
+          - name: informers_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "List of contributors (informers) who provided information for the product."
+          - name: ingredients_analysis_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed tags summarizing ingredients analysis results, such as palm oil content and vegan/vegetarian status."
+          - name: ingredients_from_palm_oil_n
+            data_type: int64
+            description: "Number of ingredients that are from palm oil."
+          - name: ingredients_n
+            data_type: int64
+            description: "Number of ingredients in the ingredients list."
+          - name: ingredients_original_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the original (unprocessed) ingredients list, before any corrections."
+          - name: ingredients_percent_analysis
+            data_type: int64
+            description: "Result of the ingredients percent estimation: not present if analysis wasn't run, 1 if percentages were successfully estimated, -1 if estimated values were impossible (e.g. summing above 100%)."
+          - name: ingredients_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the ingredients of the product."
+          - name: ingredients_text
+            data_type: struct<`list` array<struct<`element` struct<`lang` string, `text` string>>>>
+            description: "Raw list of ingredients in the main language of the product, automatically parsed to compute the Eco-Score, find allergens, etc, given per language as lang/text pairs."
+          - name: ingredients_with_specified_percent_n
+            data_type: int64
+            description: "Number of ingredients for which a percentage was specified."
+          - name: ingredients_with_unspecified_percent_n
+            data_type: int64
+            description: "Number of ingredients for which no percentage was specified."
+          - name: ingredients_without_ciqual_codes_n
+            data_type: int64
+            description: "Number of ingredients that could not be matched to a CIQUAL food code."
+          - name: ingredients_without_ciqual_codes
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "List of ingredients that could not be matched to a CIQUAL food code."
+          - name: ingredients
+            data_type: string
+            description: "Raw, unparsed ingredients text as entered by the contributor."
+          - name: known_ingredients_n
+            data_type: int64
+            description: "Number of ingredients that were recognized and matched to the ingredients taxonomy."
+          - name: labels_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the labels (e.g. organic, fair trade) associated with the product."
+          - name: labels
+            data_type: string
+            description: "Comma separated list of labels (not taxonomized), in the last language used to edit it."
+          - name: lang
+            data_type: string
+            description: "Main language of the product; used to decide which ingredients list to parse and which name/description fields are primary."
+          - name: languages_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for all languages present on the product's packaging."
+          - name: last_edit_dates_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Dates of the last edits made to the product, represented as a series of tags."
+          - name: last_editor
+            data_type: string
+            description: "The username of the contributor who last edited the product."
+          - name: last_image_t
+            data_type: int64
+            description: "Timestamp (UNIX) of the last image upload or update for the product."
+          - name: last_modified_by
+            data_type: string
+            description: "The username of the user who last modified the product."
+          - name: last_modified_t
+            data_type: int64
+            description: "Timestamp (UNIX) when the product page was last modified; updated only when primary (user-entered) data changes."
+          - name: last_updated_t
+            data_type: int64
+            description: "Timestamp (UNIX) when the product page was last modified, including both primary and secondary (computed) data changes."
+          - name: link
+            data_type: string
+            description: "Link to the product on the website of the producer."
+          - name: main_countries_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the main countries associated with the product."
+          - name: manufacturing_places_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the places where the product was manufactured or transformed."
+          - name: manufacturing_places
+            data_type: string
+            description: "Comma separated list of places where the product was manufactured or transformed."
+          - name: max_imgid
+            data_type: int64
+            description: "The highest image id uploaded so far for the product."
+          - name: minerals_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for minerals present in the product."
+          - name: misc_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Tags describing miscellaneous aspects of the product, from the misc taxonomy."
+          - name: new_additives_n
+            data_type: int64
+            description: "Number of newly detected food additives since the last analysis."
+          - name: no_nutrition_data
+            data_type: boolean
+            description: "Indicates the contributor marked that nutrition facts are not specified on the product's packaging."
+          - name: nova_group
+            data_type: int64
+            description: "NOVA group of the product as an integer from 1 to 4, indicating the degree of food processing."
+          - name: nova_groups_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the NOVA group(s) of the product."
+          - name: nova_groups
+            data_type: string
+            description: "NOVA group of the product as a string."
+          - name: nucleotides_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for nucleotides present in the product."
+          - name: nutrient_levels_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed tags for traffic-light nutrient level indicators (fat, saturated fat, sugars, salt)."
+          - name: nutriments
+            data_type: struct<`list` array<struct<`element` struct<`name` string, `value` float64, `100g` float64, `serving` float64, `unit` string, `prepared_value` float64, `prepared_100g` float64, `prepared_serving` float64, `prepared_unit` string>>>>
+            description: "All known nutrients for the product, with values per 100g and per serving in standard units."
+          - name: nutriscore_grade
+            data_type: string
+            description: "Nutri-Score for the product as a letter from a to e."
+          - name: nutriscore_score
+            data_type: int64
+            description: "Nutri-Score for the product as an integer (see also nutriscore_grade)."
+          - name: nutrition_data_per
+            data_type: string
+            description: "Whether nutrition data on the package is expressed per serving or per 100g."
+          - name: obsolete
+            data_type: boolean
+            description: "Indicates whether the product is obsolete (no longer produced)."
+          - name: origins_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the origins of the ingredients."
+          - name: origins
+            data_type: string
+            description: "Comma separated list of origins of the ingredients, as entered by the contributor."
+          - name: owner_fields
+            data_type: struct<`list` array<struct<`element` struct<`field_name` string, `timestamp` int64>>>>
+            description: "Fields and values provided by the producer through the producers platform."
+          - name: owner
+            data_type: string
+            description: "Id of the producer, in case they provide their own data about the product via the producers platform."
+          - name: packagings_complete
+            data_type: boolean
+            description: "Indicates whether the packagings array contains all the packaging parts of the product (0 or 1)."
+          - name: packaging_recycling_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the recycling instructions of the product's packaging."
+          - name: packaging_shapes_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the shapes of the product's packaging components."
+          - name: packaging_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the packaging of the product."
+          - name: packaging_text
+            data_type: struct<`list` array<struct<`element` struct<`lang` string, `text` string>>>>
+            description: "Recycling instructions as raw text, automatically parsed and used to compute the Eco-Score."
+          - name: packaging
+            data_type: string
+            description: "Comma separated list of packaging descriptions (not taxonomized), as entered by the contributor."
+          - name: packagings
+            data_type: struct<`list` array<struct<`element` struct<`material` string, `number_of_units` int64, `quantity_per_unit` string, `quantity_per_unit_unit` string, `quantity_per_unit_value` string, `recycling` string, `shape` string, `weight_measured` float64>>>>
+            description: "Array of individual packaging component objects, each with shape, material, recycling, and weight information."
+          - name: photographers
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "List of contributors who uploaded photos of the product."
+          - name: popularity_key
+            data_type: int64
+            description: "An imprecise measurement of a product's popularity based on scan statistics; a higher value means higher popularity."
+          - name: popularity_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indicators of a product's popularity, such as the amount of scans in a specific year."
+          - name: product_name
+            data_type: struct<`list` array<struct<`element` struct<`lang` string, `text` string>>>>
+            description: "Name of the product, given per language as lang/text pairs."
+          - name: product_quantity_unit
+            data_type: string
+            description: "Unit (g or ml) for the corresponding product_quantity, computed from the quantity field."
+          - name: product_quantity
+            data_type: string
+            description: "Normalized size in g or ml for the whole product, computed from the quantity field."
+          - name: purchase_places_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the countries, states, or cities where the product can be purchased."
+          - name: quantity
+            data_type: string
+            description: "Quantity of the product as displayed on the package (e.g. weight, volume, or number of portions)."
+          - name: rev
+            data_type: int64
+            description: "Revision number of this product version; incremented on each edit."
+          - name: scans_n
+            data_type: int64
+            description: "Number of scans performed with the official Open Food Facts mobile app in the last year the product was scanned."
+          - name: serving_quantity
+            data_type: string
+            description: "Normalized version of serving_size; not the number of servings in the product."
+          - name: serving_size
+            data_type: string
+            description: "Serving size text as entered by the contributor, generally in g or ml."
+          - name: states_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Tags indicating the completion status of the product, such as which data fields still need to be filled in."
+          - name: stores_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for the distributor(s)/stores selling the product."
+          - name: stores
+            data_type: string
+            description: "Comma separated list of distributor/store names for the product."
+          - name: traces_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for substances that may be present in trace amounts in the product."
+          - name: unique_scans_n
+            data_type: int64
+            description: "Number of unique scans (based on distinct IPs) performed with the official Open Food Facts mobile app in the last year the product was scanned."
+          - name: unknown_ingredients_n
+            data_type: int64
+            description: "Number of ingredients that could not be recognized or matched to the ingredients taxonomy."
+          - name: unknown_nutrients_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Tags for nutrients reported on the product that are not recognized in the nutrients taxonomy."
+          - name: vitamins_tags
+            data_type: struct<`list` array<struct<`element` string>>>
+            description: "Indexed taxonomy tags for vitamins present in the product."
+          - name: with_non_nutritive_sweeteners
+            data_type: int64
+            description: "Indicates whether the product contains non-nutritive sweeteners (as used in the Nutri-Score formula)."
+          - name: with_sweeteners
+            data_type: int64
+            description: "Indicates whether the product contains sweeteners."
+          - name: schema_version
+            data_type: int64
+            description: "Version of the product object schema used in the response. This indicates the structure of the 'product' field itself. For more details, please read: https://openfoodfacts.github.io/openfoodfacts-server/api/ref-api-and-product-schema-change-log"
