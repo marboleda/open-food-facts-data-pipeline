@@ -6,9 +6,12 @@ Open Food Facts (OFF) provides a database dump daily, as detailed [here](https:/
 
 ## Use Cases
 - Knowledge base for a RAG-powered AI Assistant (e.g. a nutrition assistant)
+- Get insights about food products
+    - Companies that have vegan offerings, which percentage of their offerings are vegan, etc.
+    - Filter information by region
 - Get insights about the OFF database to help with roadmapping for the product
     - Rate of growth over the past months/years
-    - How many products are still using an old schema
+    - Data quality (how many products are still using an old schema, how many have good data quality, etc.)
     - etc.
 
 ## Architecture
