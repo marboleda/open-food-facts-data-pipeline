@@ -18,13 +18,14 @@ Open Food Facts (OFF) provides a database dump daily, as detailed [here](https:/
 | Apache Airflow | Workflow Orchestration |
 | Google Cloud Storage | Object Storage |
 | BigQuery | Data Warehouse |
+| dbt | Data Transformation
 
 ## Dashboard
 
 ## How-To
 ### Prerequisites
 - [Terraform](https://developer.hashicorp.com/terraform/install) is installed.
-- Docker Desktop **or** Docker Engine + Docker Compose is installed
+- Docker Desktop **or** (Docker Engine + Docker Compose) is installed
 - You have a [Google Cloud Platform](https://cloud.google.com/) account
     - Make sure you have a project created that you will use for this pipeline.
     - Make sure you have the following APIs enabled:
@@ -41,6 +42,7 @@ Open Food Facts (OFF) provides a database dump daily, as detailed [here](https:/
         - Dataflow Developer
         - Dataflow Worker
         - Service Account User
+- [dbt](https://www.getdbt.com/product/what-is-dbt) account
 
 ### Steps
 1. Set up your GCS Bucket and BigQuery Dataset.
